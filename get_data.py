@@ -20,12 +20,10 @@ def show_data_label():
             break
 
 def delete_text_line_count():
-    with open('utf8_delete_text.txt', 'w') as f:
+    with open('utf8_delete_over50.txt', 'w') as f:
         with open('utf8_all.csv') as lines:
             for line in lines:
                 cols  = line.split(',')
-                if int(cols[1]) <= 100:
-                        print("line", line)
-                        f.write(line)
-
-delete_text_line_count()
+                if int(cols[1]) <= 50:
+                    print("line", line)
+                    f.write(line)

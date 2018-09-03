@@ -1,15 +1,24 @@
+import subprocess
 def get_simple_data(file_path):
-    with open(file_path) as lines:
-        infos = []
-        for line in lines:
-            cols  = line.split(',')
-            info = {
-                'title' :  cols[1], # タイトル
-                'company' : cols[33] # 出版社
-            }
-            infos.append(info)
-            print(infos)
-            break
+    with open('utf8_delete_over50.txt', 'r') as f:
+        with open(file_path) as lines:
+            infos = []
+            for line in lines:
+                cols  = line.split(',')
+                info = {
+                    'title' :  cols[1], # タイトル
+                    'company' : cols[33] # 出版社
+                }
+                cmd = "cat utf8_delete_over50.txt | grep %s" % cols[55]
+                try:
+                    res = subprocess.check_output(cmd, shell=True).decode('utf8')
+                except:
+                    print("Error.")
+                print(res)
+                break
+
+def reconfigure_separte_to_oneLine(num):
+    return num
 
 def show_data_label():
     with open('aozora_word_list_utf8.csv') as lines:

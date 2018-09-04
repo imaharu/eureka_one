@@ -30,3 +30,5 @@ def get_dict(iwanami_file, tikuma_file):
             word = str(word)
             num = str(num)
             f.write(word + " " + num + "\n")
+
+#  cat complete_dict.txt | sed = | paste -d ' ' - - | awk '{$NF="";print $0}' | sed -e 's/[ \t]*$//'

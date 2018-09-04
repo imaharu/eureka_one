@@ -3,3 +3,6 @@ utf8_all.csv
 utf8_delete*
 *.txt
 aozora_word_list_utf8.csv
+create_complete_corpus.py
+data_for_model
+shuf_model_data

@@ -25,9 +25,6 @@ def get_simple_data(file_path):
                 info["sentences"] = sentence
                 print(i)
                 f.write(str(info)+"\n")
-                print("---------------")
-                # if i == 2:
-                #     break
 
 def reconfigure_separte_to_oneLine(get_same_book_data_from_corpus):
     sentence = []

@@ -1,3 +1,4 @@
 from get_data import *
-# show_data_label()
-get_simple_data('iwanami.txt')
+from create_dict import *
+# get_simple_data('iwanami.txt')
+get_dict('uniq_complete.corpus.iwanami','uniq_complete.corpus.tikuma')

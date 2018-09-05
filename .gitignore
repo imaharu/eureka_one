@@ -11,3 +11,4 @@ base_data/*
 important_data/*
 model_data/*
 shell_data/*
+train/*

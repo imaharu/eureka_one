@@ -6,3 +6,8 @@ aozora_word_list_utf8.csv
 create_complete_corpus.py
 data_for_model
 shuf_model_data
+uniq_coplete_data/*
+base_data/*
+important_data/*
+model_data/*
+shell_data/*

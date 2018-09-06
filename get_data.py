@@ -5,9 +5,7 @@ stopwords = create_stopword()
 def get_simple_data(file_path):
     with open('complete.corpus.iwanami_save', 'w') as f:
         with open("base_data/iwanami.txt") as lines:
-            i = 0
             for line in lines:
-                i = i + 1
                 cols  = line.split(',')
                 info = {
                     'title' :  cols[1], # タイトル
@@ -15,7 +13,7 @@ def get_simple_data(file_path):
                 }
 
                 info.setdefault('sentences', '<unk>')
-                cmd = "cat mold_data/utf8_delete_over50.txt | grep %s" % cols[55] # utf8_delete_over50.txt
+                cmd = "cat mold_data/utf8_delete_over50.txt | grep %s" % cols[55]
                 try:
                     get_same_book_data_from_corpus = subprocess.check_output(cmd, shell=True).decode('utf8')
                 except:
@@ -23,7 +21,6 @@ def get_simple_data(file_path):
                 get_same_book_data_from_corpus = get_same_book_data_from_corpus.split('\n')
                 sentence = reconfigure_separte_to_oneLine(get_same_book_data_from_corpus)
                 info["sentences"] = sentence
-                print(i)
                 f.write(str(info)+"\n")
 
 def reconfigure_separte_to_oneLine(get_same_book_data_from_corpus):
@@ -51,7 +48,3 @@ def delete_text_line_count(): # 行数が50以下の行を抽出
                 if int(cols[1]) <= 50:
                     print("line", line)
                     f.write(line)
-
-# cat utf8_delete_over50.txt | grep -f iwanami.url
-# cat test.txt | rev | cut  -f 1 -d "," | rev
-# cat utf8_delete_over50.txt | grep -f iwanami.url >> utf8_iwanami.txt

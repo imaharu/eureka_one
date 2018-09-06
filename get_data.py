@@ -4,7 +4,7 @@ stopwords = create_stopword()
 
 def get_simple_data(file_path):
     with open('complete.corpus.iwanami_save', 'w') as f:
-        with open("utf8_iwanami.txt") as lines:
+        with open("base_data/iwanami.txt") as lines:
             i = 0
             for line in lines:
                 i = i + 1

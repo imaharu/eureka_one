@@ -1,6 +1,5 @@
 from get_data import *
 from create_dict import *
-from create_complete_corpus import *
 from prepare_for_LSI import *
 
 from gensim import corpora
@@ -17,7 +16,6 @@ import os
 # get_simple_data('iwanami.txt')
 # get_dict('uniq_complete.corpus.iwanami','uniq_complete.corpus.tikuma')
 # create_complete_corpus('uniq_complete.corpus.iwanami','uniq_complete.corpus.tikuma')
-# LSI作る
 
 documents = LSI_data("uniq_coplete_data/uniq_all_corpus")
 # create_LSI(documents)

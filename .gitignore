@@ -13,3 +13,4 @@ model_data/*
 shell_data/*
 train/*
 .DS_Store
+increase_data/*

@@ -15,7 +15,7 @@ def get_simple_data(file_path):
                 }
 
                 info.setdefault('sentences', '<unk>')
-                cmd = "cat utf8_delete_over50.txt | grep %s" % cols[55] # utf8_delete_over50.txt
+                cmd = "cat mold_data/utf8_delete_over50.txt | grep %s" % cols[55] # utf8_delete_over50.txt
                 try:
                     get_same_book_data_from_corpus = subprocess.check_output(cmd, shell=True).decode('utf8')
                 except:
@@ -25,6 +25,7 @@ def get_simple_data(file_path):
                 info["sentences"] = sentence
                 print(i)
                 f.write(str(info)+"\n")
+
 def reconfigure_separte_to_oneLine(get_same_book_data_from_corpus):
     sentence = []
     for line_corpus in get_same_book_data_from_corpus:

@@ -32,7 +32,7 @@ def create_LSI(documents):
     # no_above (float, optional) – Keep tokens which are contained in no more than no_above documents (fraction of total corpus size, not an absolute number).
     # keep_n (int, optional) – Keep only the first keep_n most frequent tokens.
     # keep_tokens (iterable of str) – Iterable of tokens that must stay in dictionary after filtering.
-    dic.filter_extremes(no_below = 3, no_above = 0.3)
+    dic.filter_extremes(no_below = 4, no_above = 0.3)
     bow_corpus = [dic.doc2bow(d) for d in documents]
 
     dic.save_as_text('train/dic.txt')

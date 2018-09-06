@@ -12,3 +12,4 @@ important_data/*
 model_data/*
 shell_data/*
 train/*
+.DS_Store

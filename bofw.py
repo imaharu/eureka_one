@@ -9,24 +9,18 @@ from gensim import models
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from sklearn import svm
+from sklearn.linear_model import SGDClassifier
 from sklearn.preprocessing import StandardScaler
 import numpy as np
 import os
-
-def Classification_result(company): # ２値分類のみ対応
-    if re.search(r'岩波文庫|岩波書店', company):
-        return 1
-    elif re.search(r'ちくま文庫|筑摩書房', company):
-        return 0
-    return -1
 
 # get_simple_data('iwanami.txt')
 # get_dict('uniq_complete.corpus.iwanami','uniq_complete.corpus.tikuma')
 # create_complete_corpus('uniq_complete.corpus.iwanami','uniq_complete.corpus.tikuma')
 # LSI作る
 
-# documents = LSI_data("uniq_coplete_data/uniq_all_corpus")
-create_LSI(documents)
+documents = LSI_data("uniq_coplete_data/uniq_all_corpus")
+# create_LSI(documents)
 
 dic = corpora.Dictionary.load_from_text('train/dic.txt')
 
@@ -61,13 +55,17 @@ with open("uniq_coplete_data/uniq_all_corpus",'r') as lines:
 
 sc=StandardScaler()
 sc.fit(X)
-X_std=sc.transform(X)
 
-X_train, X_test, y_train, y_test = train_test_split(X_std, y, test_size=0.6)
+k = 0
+for i in range(500):
+    X_std=sc.transform(X)
+    X_train, X_test, y_train, y_test = train_test_split(X_std, y, test_size=0.2)
+    y_train=np.reshape(y_train,(-1))
+    y_test=np.reshape(y_test,(-1))
+    clf = SGDClassifier() # 平均 0.851444444444
+    # clf = svm.SVC(kernel='rbf')
+    clf.fit(X_train, y_train)
+    k += np.mean(clf.predict(X_test) == y_test)
+    print(np.mean(clf.predict(X_test) == y_test))
 
-y_train=np.reshape(y_train,(-1))
-y_test=np.reshape(y_test,(-1))
-clf = svm.SVC(kernel='rbf')
-clf.fit(X_train, y_train)
-
-print(np.mean(clf.predict(X_test) == y_test))
+print("平均", k / 500)

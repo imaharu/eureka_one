@@ -17,7 +17,8 @@ from sklearn import svm
 from sklearn.linear_model import SGDClassifier
 from sklearn.preprocessing import StandardScaler
 
-documents = LSI_data("uniq_coplete_data/uniq_all_corpus")
+documents = LSI_data("increase_data/increase.all")
+
 # create_LSI(documents)
 
 dic = corpora.Dictionary.load_from_text('train/dic.txt')
@@ -34,7 +35,7 @@ for lsi in lsi_corpus:
         x.append(tuples[1])
     X.append(x)
 
-with open("uniq_coplete_data/uniq_all_corpus",'r') as lines:
+with open("increase_data/increase.all",'r') as lines:
     y = []
     for line in lines:
         # str -> dict
@@ -59,8 +60,8 @@ for i in range(train_num):
     X_train, X_test, y_train, y_test = train_test_split(X_std, y, test_size=0.2)
     y_train = np.reshape(y_train,(-1))
     y_test = np.reshape(y_test,(-1))
-    clf = SGDClassifier(penalty='l1') # 平均 0.851444444444
-    # clf = svm.SVC()
+    # clf = SGDClassifier(penalty='l1')
+    clf = svm.SVC()
     clf.fit(X_train, y_train)
     
     accuracy_scores += accuracy_score(y_test, clf.predict(X_test)) # 正解率

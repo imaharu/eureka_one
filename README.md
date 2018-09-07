@@ -187,6 +187,14 @@ F値 0.86410664437
 データを整形するのに最も、時間がかかるのを体感した。
 
 
+## データを試した方
+```
+increase.all.zipを展開し
+increase_data/increase.allという構成になるようにする
+
+python main.py
+```
+
 ## tips
 
 [StopWordの除去](http://svn.sourceforge.jp/svnroot/slothlib/CSharp/Version1/SlothLib/NLP/Filter/StopWord/word/Japanese.txt)

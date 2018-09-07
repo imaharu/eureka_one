@@ -219,6 +219,7 @@ RBFカーネルは、次元を追加することでデータの特徴を捉え�
 increase.all.zipを展開し
 increase_data/increase.allという構成になるようにする
 
+mkdir train
 python main.py
 ```
 

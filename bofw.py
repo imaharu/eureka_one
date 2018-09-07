@@ -47,7 +47,7 @@ with open("increase_data/increase.all",'r') as lines:
         else:
             y.append([0])
 
-train_num = 100
+train_num = 10
 accuracy_scores = 0
 precision_scores = 0
 recall_scores = 0
@@ -55,24 +55,28 @@ f1_scores = 0
 sc=StandardScaler()
 sc.fit(X)
 
-for i in range(train_num):
-    X_std=sc.transform(X)
-    X_train, X_test, y_train, y_test = train_test_split(X_std, y, test_size=0.2)
-    y_train = np.reshape(y_train,(-1))
-    y_test = np.reshape(y_test,(-1))
-    # clf = SGDClassifier(penalty='l1')
-    clf = svm.SVC()
-    clf.fit(X_train, y_train)
-    
-    accuracy_scores += accuracy_score(y_test, clf.predict(X_test)) # 正解率
-    precision_scores += precision_score(y_test, clf.predict(X_test)) # 精度
-    recall_scores += recall_score(y_test, clf.predict(X_test)) # 検出率
-    f1_scores += f1_score(y_test, clf.predict(X_test)) # F値
-    print(accuracy_scores)
+for j in range(1):
+    accuracy_scores = 0
+    precision_scores = 0
+    recall_scores = 0
+    f1_scores = 0
+    for i in range(train_num):
+        X_std=sc.transform(X)
+        X_train, X_test, y_train, y_test = train_test_split(X_std, y, test_size=0.2)
+        y_train = np.reshape(y_train,(-1))
+        y_test = np.reshape(y_test,(-1))
+        clf = svm.SVC(C=1.7, kernel="rbf")
+        clf.fit(X_train, y_train)
+        
+        accuracy_scores += accuracy_score(y_test, clf.predict(X_test)) # 正解率
+        precision_scores += precision_score(y_test, clf.predict(X_test)) # 精度
+        recall_scores += recall_score(y_test, clf.predict(X_test)) # 検出率
+        f1_scores += f1_score(y_test, clf.predict(X_test)) # F値
+        # print(accuracy_scores)
 
-print("------------------")
-print("正解率", accuracy_scores / train_num)
-print("精度", precision_scores / train_num)
-print("検出率", recall_scores / train_num)
-print("F値", f1_scores / train_num)
-print("------------------")
+    print("------------------")
+    print("正解率", accuracy_scores / train_num)
+    print("精度", precision_scores / train_num)
+    print("検出率", recall_scores / train_num)
+    print("F値", f1_scores / train_num)
+    print("------------------")

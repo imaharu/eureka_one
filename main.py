@@ -47,7 +47,7 @@ with open("increase_data/increase.all",'r') as lines:
         else:
             y.append([0])
 
-train_num = 10
+train_num = 100
 accuracy_scores = 0
 precision_scores = 0
 recall_scores = 0

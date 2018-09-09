@@ -231,7 +231,8 @@ RBFカーネルは、次元を上げることでデータの特徴を捉える�
 
 [StopWordの除去](http://svn.sourceforge.jp/svnroot/slothlib/CSharp/Version1/SlothLib/NLP/Filter/StopWord/word/Japanese.txt)
 
-complete.corpus*で削除した文字
+complete.corpusで削除した文字
+
 ```
 \u3000
 ```
